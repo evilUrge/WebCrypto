@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+        <!-- Latest compiled JavaScript -->
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <title>webCrypro</title>
+        <h2>Master Encryption</h2>
+    </head>
+    <body>
+        <div class="container-fluid">
+        <form action='/' method="POST" role="form" class="col-xs-3">
+            <div class="form-group">
+                <label for="text">Text to cipher: </label>
+                <input type="text" class="form-control" name='text_to_cipher' placeholder="Text to cipher" value="{{ text_to_encode }}">
+            </div>
+            <div class="form-group">
+                <label for="cipher_selector">Choose cipher type: </label>
+                <select id='cipher_selector' class="form-control" name="cipher_type_selector">
+                    {% for cipher_type in cipher_types %}
+                        <option value="{{ cipher_type }}">{{ cipher_type }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="text"> Cipher needed arguments: </label>
+                <input type="text" class='form-control' name="argument_for_cipher" placeholder="cipher argument" value="{{ cipher_args }}">
+            </div>
+            <button type="submit" class="btn btn-defaul">Send</button>
+        </form>
+            <p class="lead text-left">
+                Encoded Text: {{ encoded }}
+            </p>
+        </div>
+    </body>
+</html>
